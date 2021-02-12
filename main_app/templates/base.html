@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Bird Collector</title>
+</head>
+<body>
+    <header class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}" class="left brand-logo">BirdCollector</a>
+                    </li>
+                </ul>
+                <ul class="right">
+                    <li>
+                        <a href="{% url 'about' %}">About</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'index' %}">View the Birds</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    <footer class="page-footer">
+        <div class="right">All Rights Reserved &copy; <span id='year'></span> BirdCollector</div>
+    </footer>
+    <script>
+        const spanEl = document.getElementById('year');
+        spanEl.innerText = new Date().getFullYear();
+    </script>
+    
+</body>
+</html>
