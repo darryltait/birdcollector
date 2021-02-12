@@ -6,6 +6,7 @@
     <hr>
 
     {% for bird in birds %}
+    <a href="/birds/{{ bird.id }}">
         <div class="card">
             <div class="card-content">
                 <span class="cart-title">{{ bird.name }}</span>
@@ -18,7 +19,7 @@
                 {% endif %}
             </div>
         </div>
-
+    </a>
     {% endfor %}
 
     {% endblock %}
