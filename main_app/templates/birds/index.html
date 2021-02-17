@@ -6,7 +6,7 @@
     <hr>
 
     {% for bird in birds %}
-    <a href="/birds/{{ bird.id }}">
+    <a href="{% url 'detail' bird.id %}">
         <div class="card">
             <div class="card-content">
                 <span class="cart-title">{{ bird.name }}</span>
@@ -15,7 +15,7 @@
                 {% if bird.age > 0 %}
                     <p>Age: {{ bird.age }}</p>
                 {% else %}
-                    <p>Age: Kitten</p>
+                    <p>Age: {{bird.breed}}-ling</p>
                 {% endif %}
             </div>
         </div>

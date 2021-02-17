@@ -8,13 +8,13 @@
 
     <div class="card">
         <div class="card-content">
-            <!-- <span class="card-title">{{ bird.name }}</span> -->
+            <span class="card-title">{{ bird.name }}</span>
             <p>Breed: {{ bird.breed }}</p>
             <p>Description {{ bird.description }}</p>
             {% if bird.age > 0 %}
             <p>Age: {{ bird.age }}</p>
             {% else %}
-            <p>Age: Kitten</p>
+            <p>Age: {{bird.breed}}-ling</p>
             {% endif %}
         </div>
     </div>
