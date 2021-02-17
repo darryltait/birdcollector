@@ -17,6 +17,10 @@
             <p>Age: {{bird.breed}}-ling</p>
             {% endif %}
         </div>
+        <div class="class card-action">
+            <a href="{% url 'birds_update' bird.id %}">Edit</a>
+            <a href="{% url 'birds_delete' bird.id %}">Delete</a>
+        </div>
     </div>
     
 
