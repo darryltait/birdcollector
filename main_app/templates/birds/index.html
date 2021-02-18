@@ -8,8 +8,8 @@
     {% for bird in birds %}
     <a href="{% url 'detail' bird.id %}">
         <div class="card">
-            <div class="card-content">
-                <span class="cart-title">{{ bird.name }}</span>
+            <div class=" card-content">
+                <span class="card-title">{{ bird.name }}</span>
                 <p>Breed: {{ bird.breed }}</p>
                 <p>Description: {{ bird.description }}</p>
                 {% if bird.age > 0 %}
