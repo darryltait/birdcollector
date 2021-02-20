@@ -12,7 +12,7 @@
                 <div class="card-content">
                     <span class="card-title">{{ bird.name }}</span>
                     <p>Breed: {{ bird.breed }}</p>
-                    <p>Description {{ bird.description }}</p>
+                    <p>Description: {{ bird.description }}</p>
                     {% if bird.age > 0 %}
                     <p>Age: {{ bird.age }}</p>
                     {% else %}
@@ -53,7 +53,52 @@
               </table>
 
         </div>
-    </div>      
+    </div>  
+    
+    <hr>
+
+    <div class="row">
+        <div class="col s6">
+            <h3>{{ bird.name }}'s Toys</h3>
+        {% if bird.toys.count %}
+            {% for toy in bird.toys.all %}
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">
+                            A <span style="color: {{ toy.color }}">{{ toy.color }}</span> {{ toy.name }}
+                        </span>
+                    </div>
+                </div>
+            {% endfor%}
+            {% else %}
+                <h5>No Toys :(</h5>
+
+        {% endif %}
+        </div>
+        <div class="col s6">
+            <h3>Available Toys</h3>
+            {%  if toys.count %}
+                {% for toy in toys.all %}
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">
+                                A<span style="color: {{toy.color}}"> {{ toy.color }} </span>{{ toy.name }}
+                            </span>
+                        </div>
+                        <div class="card-action">
+                            <form action="{% url 'assoc_toy' bird.id toy.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h5>{{bird.name}} Already has all toys available</h5>
+            {%  endif %}
+
+        </div>
+    </div>
     <script>
         var dateEl = document.getElementById('id_date');
         M.Datepicker.init(dateEl, {

@@ -7,11 +7,28 @@ from datetime import date
 MEALS = (("B", "Breakfast"), ("L", "Lunch"), ("D", "Dinner"))
 
 
+class Toy(models.Model):
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("toys_detail", kwargs={"toy_id": self.id})
+        # return reverse("toys_detail", kwargs={"pk": self.id})
+
+    class Meta:
+        ordering = ["name"]
+
+
 class Bird(models.Model):
     name = models.CharField(max_length=250)
     breed = models.CharField(max_length=250)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
+
+    toys = models.ManyToManyField(Toy)
 
     def __str__(self):
         return self.name
