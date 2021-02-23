@@ -6,6 +6,7 @@ body {
   main {
     flex: 1 0 auto;
 
+
   }
   footer {
     padding-top: 0;
@@ -15,3 +16,9 @@ body {
   .card-copy{
      background-color: orange;
   }
+
+  h1 {
+    /* color: #536dfe; */
+    
+  }
+

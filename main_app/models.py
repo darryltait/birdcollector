@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from datetime import date
 
+# import the built-in User model from django library
+
 # Create your models here.
 
 MEALS = (("B", "Breakfast"), ("L", "Lunch"), ("D", "Dinner"))
@@ -50,3 +52,13 @@ class Feeding(models.Model):
 
     class Meta:
         ordering = ["-date"]
+
+
+class Photo(models.Model):
+    # store the url of image on aws
+    url = models.CharField(max_length=200)
+    # relationship to the cat
+    bird = models.ForeignKey(Bird, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for cat id # {self.cat_id} @ {self.url}"

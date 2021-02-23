@@ -24,18 +24,38 @@
                     <a href="{% url 'birds_delete' bird.id %}">Delete</a>
                 </div>
             </div>
+
+            <!-- display the bird photos -->
+            {% for photo in bird.photo_set.all %}
+                <img src="{{ photo.url }}" alt="{{ photo.url}}" class="responsive-img card-panel">
+            {% empty %}
+                <div class="card-panel indigo-text text-accent-2">No photos uploaded</div>
+
+            {% endfor %}
+            <!-- add photo form -->
+            <form 
+                action="{% url 'add_photo' bird.id %}" 
+                enctype="multipart/form-data" 
+                method="POST"
+                class="card-panel">
+                {% csrf_token %}
+
+                <input type="file" name="photo_file">
+                <br><br>
+                <input type="submit" class="btn" value="Upload Photo">
+            </form>
         </div>
         <div class="col s6">
             <form action="{% url 'add_feeding' bird.id %}" method="post">
                 {% csrf_token %}
                 {{ feeding_form.as_p }}
-                <input type="submit" class="btn" value="Add Feeding">
+                <input type="submit" class="btn indigo accent-2" value="Add Feeding">
             </form>
             <br>
             {% if bird.fed_for_today %}
                 <div class="card-panel teal-text center-align">{{bird.name}} has been fed all meals for today</div>
             {% else %}
-                <div class="card-panel red-text center-align">{{bird.name}} might be hungry</div>
+                <div class="card-panel red-text center-align">{{bird.name}} might be hungry...</div>
             {% endif %}
 
             <table class="striped">

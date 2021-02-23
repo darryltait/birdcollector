@@ -20,4 +20,5 @@ urlpatterns = [
     path(
         "birds/<int:bird_id>/assoc_toy/<int:toy_id>/", views.assoc_toy, name="assoc_toy"
     ),
+    path("birds/<int:bird_id>/add_photo", views.add_photo, name="add_photo"),
 ]
