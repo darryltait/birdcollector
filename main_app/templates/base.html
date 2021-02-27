@@ -19,25 +19,36 @@
             <div class="nav-wrapper green">
                 <ul>
                     <li>
-                        <a href="{% url 'home' %}" class="left brand-logo">BirdCollector</a>
+                        <a href="{% url 'home' %}" class="left brand-logo bc-logo"> BirdCollector</a>
                     </li>
                 </ul>
                 <ul class="right">
+                    {% if user.is_authenticated %}
+                    <li class="indigo-text text-accent-2">
+                        Welcome {{user}}!
+                    </li>
+                    {% endif %}
                     <li>
                         <a href="{% url 'about' %}">About</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'toys_create' %}">Add a Toy</a>
                     </li>
                     <li>
-                        <a href="{% url 'toys_index' %}">View the Toys</a>
+                        <a href="{% url 'toys_index' %}">View All Toys</a>
                     </li>
                     <li>
                         <a href="{% url 'birds_create' %}">Add a Bird</a>
                     </li>
                     <li>
-                        <a href="{% url 'index' %}">View the Birds</a>
+                        <a href="{% url 'index' %}">View All My Birds</a>
                     </li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -47,8 +58,10 @@
 
         {% endblock %}
     </main>
-    <footer class="page-footer green">
-        <div class="right">All Rights Reserved &copy; <span id='year'></span> BirdCollector</div>
+    <!-- <footer class="page-footer green"> -->
+    <footer class=" green">
+        <div class="">All Rights Reserved &copy; <span id='year'></span> BirdCollector</div>
+        <!-- <div class="right">All Rights Reserved &copy; <span id='year'></span> BirdCollector</div> -->
     </footer>
     <script>
         const spanEl = document.getElementById('year');

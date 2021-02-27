@@ -42,7 +42,7 @@
 
                 <input type="file" name="photo_file">
                 <br><br>
-                <input type="submit" class="btn" value="Upload Photo">
+                <input type="submit" class="btn indigo accent-2" value="Upload Photo">
             </form>
         </div>
         <div class="col s6">
@@ -53,7 +53,7 @@
             </form>
             <br>
             {% if bird.fed_for_today %}
-                <div class="card-panel teal-text center-align">{{bird.name}} has been fed all meals for today</div>
+                <div class="card-panel indigo-text text-accent-2 center-align">{{bird.name}} has been fed all meals for today</div>
             {% else %}
                 <div class="card-panel red-text center-align">{{bird.name}} might be hungry...</div>
             {% endif %}
@@ -88,6 +88,12 @@
                             A <span style="color: {{ toy.color }}">{{ toy.color }}</span> {{ toy.name }}
                         </span>
                     </div>
+                    <div class="card-action">
+                        <form action="{% url 'unassoc_toy' bird.id toy.id %}" method="post">
+                            {% csrf_token %}
+                          <button type="submit" class="btn indigo accent-2">Remove</button>
+                        </form>
+                    </div>
                 </div>
             {% endfor%}
             {% else %}
@@ -108,7 +114,7 @@
                         <div class="card-action">
                             <form action="{% url 'assoc_toy' bird.id toy.id %}" method="post">
                                 {% csrf_token %}
-                                <button type="submit" class="btn">Add</button>
+                                <button type="submit" class="btn indigo accent-2">Add</button>
                             </form>
                         </div>
                     </div>

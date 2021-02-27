@@ -3,6 +3,7 @@ from django.urls import reverse
 from datetime import date
 
 # import the built-in User model from django library
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -31,6 +32,9 @@ class Bird(models.Model):
     age = models.IntegerField()
 
     toys = models.ManyToManyField(Toy)
+
+    # ownership field (relationship to the user)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

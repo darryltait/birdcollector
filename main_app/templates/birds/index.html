@@ -10,13 +10,19 @@
         <div class="card">
             <div class=" card-content">
                 <span class="card-title">{{ bird.name }}</span>
-                <p>Breed: {{ bird.breed }}</p>
+                <!-- <p>Breed: {{ bird.breed }}</p> -->
                 <!-- <p>Description: {{ bird.description }}</p>
                 {% if bird.age > 0 %}
                     <p>Age: {{ bird.age }}</p>
                 {% else %}
                     <p>Age: {{bird.breed}}-ling</p>
                 {% endif %} -->
+                <!-- {% for photo in bird.photo_set.all %}
+                    <img src="{{ photo.url }}" alt="{{ photo.url}}" class="responsive-img card-panel">
+                {% empty %}
+                    <div class="card-panel indigo-text text-accent-2">No photos uploaded</div> -->
+
+                <!-- {% endfor %}  -->
             </div>
         </div>
     </a>

@@ -8,17 +8,28 @@ body {
 
 
   }
+
+  .bc-logo {
+    margin-left: 12px;
+  }
+
   footer {
-    padding-top: 0;
-    text-align: right;
+    /* padding-top: 0; */
+    /* text-align: right; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    color: white;
   }
 
   .card-copy{
      background-color: orange;
   }
 
-  h1 {
-    /* color: #536dfe; */
-    
+  
+
+  .card-content {
+    color: black;
   }
 

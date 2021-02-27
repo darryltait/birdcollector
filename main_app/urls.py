@@ -21,4 +21,10 @@ urlpatterns = [
         "birds/<int:bird_id>/assoc_toy/<int:toy_id>/", views.assoc_toy, name="assoc_toy"
     ),
     path("birds/<int:bird_id>/add_photo", views.add_photo, name="add_photo"),
+    path("accounts/signup/", views.signup, name="signup"),
+    path(
+        "birds/<int:bird_id>/unassoc_toy/<int:toy_id>/",
+        views.unassoc_toy,
+        name="unassoc_toy",
+    ),
 ]
